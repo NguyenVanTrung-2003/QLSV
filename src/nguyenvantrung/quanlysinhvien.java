@@ -10,7 +10,7 @@ import java.util.List;
  * 
  * @author vantr
  */
-public class    quanlysinhvien {
+public class  quanlysinhvien {
     private List<Student> dssv = new ArrayList<>();
     private final String tenFile = "student.txt";
 
@@ -18,11 +18,14 @@ public class    quanlysinhvien {
         docTuFile();
     }
 
-    public void themSinhVien(String ten, String gt, String tuoi, float diemToan, float diemLy, float diemHoa) {
+    private void themSinhVien(String ten, String gt, String tuoi, float diemToan, float diemLy, float diemHoa) {
         dssv.add(new Student(ten, gt, tuoi, diemToan, diemLy, diemHoa));
     }
+    public void t(String ten, String gt, String tuoi, float diemToan, float diemLy, float diemHoa){
+        themSinhVien(ten,gt,tuoi,diemToan,diemLy,diemHoa);
+    }
 
-    public void capNhatDS(int id, String ten, String gt, String tuoi, float diemToan, float diemLy, float diemHoa) {
+    private void capNhatDS(int id, String ten, String gt, String tuoi, float diemToan, float diemLy, float diemHoa) {
         for (Student sv : dssv) {
             if (sv.getId() == id) {
                 sv.setTen(ten);
@@ -36,15 +39,21 @@ public class    quanlysinhvien {
         }
         System.out.println("Không tìm thấy ID sinh viên");
     }
+    public void cn(int id, String ten, String gt, String tuoi, float diemToan, float diemLy, float diemHoa){
+        capNhatDS(id, ten, gt, tuoi, diemToan, diemLy, diemHoa);
+    }
 
-    public void xoaSinhVien(int id) {
+    private void xoaSinhVien(int id) {
         boolean removed = dssv.removeIf(sv -> sv.getId() == id);
         if (!removed) {
             System.out.println("Không tìm thấy ID sinh viên để xóa");
         }
     }
+    public void x(int id){
+        xoaSinhVien(id);
+    }
 
-    public List<Student> timKiemTheoTen(String ten) {
+    private List<Student> timKiemTheoTen(String ten) {
         List<Student> ketQua = new ArrayList<>();
         for (Student sv : dssv) {
             if (sv.getTen().toLowerCase().contains(ten.toLowerCase())) {
@@ -53,21 +62,32 @@ public class    quanlysinhvien {
         }
         return ketQua;
     }
-    
-    public void sapXepTheoDiemTB() {
+    public void t(String ten){
+        timKiemTheoTen(ten);
+    }
+    private void sapXepTheoDiemTB() {
         dssv.sort(Comparator.comparing(Student::getDiemTB).reversed());
     }
-
-    public void sapXepTheoTen() {
-        dssv.sort(Comparator.comparing(Student::getTen));
+    public void sd(){
+        sapXepTheoDiemTB();
     }
 
-    public void hienThi() {
+    private void sapXepTheoTen() {
+        dssv.sort(Comparator.comparing(Student::getTen));
+    }
+    public void st(){
+        sapXepTheoTen();
+    }
+
+    private void hienThi() {
         if (dssv.isEmpty()) {
             System.out.println("Danh sách sinh viên trống");
         } else {
             dssv.forEach(System.out::println);
         }
+    }
+    public void ht(){
+        hienThi();
     }
 
     private void docTuFile() {
@@ -85,6 +105,7 @@ public class    quanlysinhvien {
     }
 
     public void ghiVaoFile() {
+        
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(tenFile))) {
             oos.writeObject(dssv);
         } catch (IOException e) {

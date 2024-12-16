@@ -36,8 +36,7 @@ public class Student implements Serializable {
     private void DiemTB() {
         this.diemTB = (diemToan + diemLy + diemHoa) / 3;
     }
-
-  
+ 
     private void HocLuc() {
         if (diemTB >= 8) {
             this.hocLuc = "Giỏi";
@@ -50,7 +49,7 @@ public class Student implements Serializable {
         }
     }
 
-    
+
     public void xuat() {
         System.out.println("ID: " + id);
         System.out.println("Tên sinh viên: " + ten);

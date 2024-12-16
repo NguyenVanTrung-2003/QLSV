@@ -50,7 +50,7 @@ public class Nguyenvantrung {
                     float diemhoa = sc.nextFloat();
                     System.out.print("Nhập điểm lý: ");
                     float diemly = sc.nextFloat();
-                    ql.themSinhVien(ten, gt, tuoi, diemtoan, diemly, diemhoa);
+                    ql.t(ten, gt, tuoi, diemtoan, diemly, diemhoa);
                     break;
 
                 case 2:
@@ -70,31 +70,32 @@ public class Nguyenvantrung {
                     float diemhoam = sc.nextFloat();
                     System.out.print("Nhập điểm lý mới: ");
                     float diemlym = sc.nextFloat();
-                    ql.capNhatDS(id, tenm, gtm, tuoim, diemtoanm, diemlym, diemhoam);
+                    
+                    ql.cn(id, tenm, gtm, tuoim, diemtoanm, diemlym, diemhoam);
                     break;
 
                 case 3:
                     System.out.print("Nhập ID sinh viên cần xóa: ");
                     int idx = sc.nextInt();
-                    ql.xoaSinhVien(idx);
+                    ql.x(idx);
                     break;
 
                 case 4:
                     System.out.print("Nhập tên sinh viên cần tìm: ");
                     String tenct = sc.nextLine();
-                    ql.timKiemTheoTen(tenct);
+                    ql.t(tenct);
                     break;
 
                 case 5:
-                    ql.sapXepTheoDiemTB();
+                    ql.sd();
                     break;
 
                 case 6:
-                    ql.sapXepTheoTen();
+                    ql.st();
                     break;
 
                 case 7:
-                    ql.hienThi();
+                    ql.ht();
                     break;
 
                 case 8:
